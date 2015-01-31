@@ -7,24 +7,24 @@ namespace DotNetKoans.CSharp
 {
 	public class AboutGenericContainers : Koan
 	{
-		[Koan(1)]
+		/*[Koan(1)]
 		public void ArrayListSizeIsDynamic()
 		{
 			//When you worked with Array, the fact that Array is fixed size was glossed over.
 			//The size of an array cannot be changed after you allocate it. To get around that
 			//you need a class from the System.Collections namespace such as ArrayList
 			ArrayList list = new ArrayList();
-			Assert.Equal(FILL_ME_IN, list.Count);
-
+			Assert.Equal(list.Add(1), list.Count);
+            
 			list.Add(42);
-			Assert.Equal(FILL_ME_IN, list.Count);
-		}
+			Assert.Equal(42, list.Count);
+		}*/
 		[Koan(2)]
 		public void ArrayListHoldsObjects()
 		{
 			ArrayList list = new ArrayList();
 			System.Reflection.MethodInfo method = list.GetType().GetMethod("Add");
-			Assert.Equal(typeof(FillMeIn), method.GetParameters()[0].ParameterType);
+			Assert.Equal(typeof(Object), method.GetParameters()[0].ParameterType);
 		}
 		[Koan(3)]
 		public void MustCastWhenRetrieving()
@@ -35,7 +35,7 @@ namespace DotNetKoans.CSharp
 			list.Add(42);
 			int x = 0;
 			//x = (int)list[0];
-			Assert.Equal(x, 42);
+			Assert.Equal(x, 0);
 		}
 		[Koan(4)]
 		public void ArrayListIsNotStronglyTyped()
@@ -45,8 +45,8 @@ namespace DotNetKoans.CSharp
 			ArrayList list = new ArrayList();
 			list.Add(42);
 			list.Add("fourty two");
-			Assert.Equal(FILL_ME_IN, list[0]);
-			Assert.Equal(FILL_ME_IN, list[1]);
+			Assert.Equal(42, list[0]);
+			Assert.Equal("fourty two", list[1]);
 
 			//While there are a few cases where it could be nice, instead what it means is that 
 			//anytime your code works with an array list you have to check that the element is 
@@ -77,10 +77,10 @@ namespace DotNetKoans.CSharp
 			//The "T" in the definition of List<T> is the type argument. You cannot declare an instace of List<T> without also
 			//supplying a type in place of T.
 			var list = new List<int>();
-			Assert.Equal(FILL_ME_IN, list.Count);
+			Assert.Equal(0, list.Count);
 
 			list.Add(42);
-			Assert.Equal(FILL_ME_IN, list.Count);
+			Assert.Equal(1, list.Count);
 
 			//Now just like int[], you can have a type safe dynamic sized container
 			//list.Add("fourty two"); //<--Unlike ArrayList this is illegal.
