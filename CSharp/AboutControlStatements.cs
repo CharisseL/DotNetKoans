@@ -81,16 +81,16 @@ namespace DotNetKoans.CSharp
         }
 
         //This is out of place for control statements, but necessary for Koan 8
-       /* [Koan(7)]
+        [Koan(7)]
         public void NullableTypes()
         {
             int i = 0;
             //i = null; //You can't do this
 
             int? nullableInt = null; //but you can do this
-			Assert.NotNull(0);
-			Assert.Null(0);
-        }*/
+			Assert.NotNull(i);
+			Assert.Null(nullableInt);
+        }
 
         [Koan(8)]
         public void AssignIfNullOperator()
@@ -121,7 +121,7 @@ namespace DotNetKoans.CSharp
                 isAboutMethods = true;
 
             Assert.Equal(true, isKoan);
-            Assert.Equal(false, isAboutControlStatements);
+            Assert.Equal(true, isAboutControlStatements);
             Assert.Equal(false, isAboutMethods);
 
         }
@@ -136,7 +136,7 @@ namespace DotNetKoans.CSharp
                 result = result + i;
                 i += 1;
             }
-            Assert.Equal(FILL_ME_IN, result);
+            Assert.Equal(7, result);
         }
 
         [Koan(11)]
@@ -150,22 +150,22 @@ namespace DotNetKoans.CSharp
                 result = result + i;
                 i += 1;    
             }
-            Assert.Equal(FILL_ME_IN, result);
+            Assert.Equal(7, result);
         }
 
-        [Koan(12)]
-        public void ContinueStatement()
-        {
-            int i = 0;
-            var result = new List<int>();
-            while(i < 10)
-            {
-                i += 1;
-                if ((i % 2) == 0) { continue; }
-                result.Add(i);
-            }
-            Assert.Equal(FILL_ME_IN, result);
-        }
+         [Koan(12)]
+         public void ContinueStatement()
+         {
+             int i = 0;
+             var result = new List<int>();
+             while(i < 10)
+             {
+                 i += 1;
+                 if ((i % 2) == 0) { continue; }
+                 result.Add(i);
+             }
+             Assert.Equal(new List<int> {1, 3, 5, 7, 9}, result);
+         }
 
         [Koan(13)]
         public void ForStatement()
@@ -175,7 +175,7 @@ namespace DotNetKoans.CSharp
             {
                 list[i] = (list[i].ToUpper());
             }
-            Assert.Equal(FILL_ME_IN, list);
+            Assert.Equal(new List<string> {"FISH", "AND", "CHIPS" }, list);
         }
 
         [Koan(14)]
@@ -187,8 +187,8 @@ namespace DotNetKoans.CSharp
             {
                 finalList.Add(item.ToUpper());
             }
-            Assert.Equal(FILL_ME_IN, list);
-            Assert.Equal(FILL_ME_IN, finalList);
+            Assert.Equal(new List<string> (new string[] {"fish", "and", "chips" }), list);
+            Assert.Equal(new List<string> (new string[] {"FISH", "AND", "CHIPS" }), finalList);
         }
 
         [Koan(15)]
@@ -204,7 +204,7 @@ namespace DotNetKoans.CSharp
             }
             catch (Exception ex)
             {
-                Assert.Equal(typeof(FillMeIn), ex.GetType());
+                Assert.Equal(typeof(InvalidOperationException), ex.GetType());
             }
         }
 
@@ -233,7 +233,7 @@ namespace DotNetKoans.CSharp
                 whoCaughtTheException = "When we tried to move to the next item in the list";
             }
 
-            Assert.Equal(FILL_ME_IN, whoCaughtTheException);
+            Assert.Equal("When we tried to move to the next item in the list", whoCaughtTheException);
         }
     }
 }
